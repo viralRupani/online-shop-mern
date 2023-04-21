@@ -1,4 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 * {
     padding: 0;
     margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    background-color: #424874;
+    color: white;
+    height: fit-content;
+    padding: 20px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.right-nav {
+    width: 50%;
+    display: inline-block;
+}
+
+.left-nav {
+    display: inline-block;
+    width: 49%;
+    text-align: end;
+}
+
+.carousel {
+    height: 50vh;
+    background-color: aliceblue;
+    border: black solid 2px;
+}
+
+.products {
+    width: 100vw;
+    text-align: center;
+}
+
+.product {
+    display: inline-block;
+    margin: 15px;
+}
+
+.product-image {
+    height: 15rem;
+    width: 20rem;
 }
