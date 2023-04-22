@@ -34,6 +34,11 @@ input {
     font-size: 18px;
     width: 17.75rem;
     border: 0;
+    cursor: pointer;
+}
+
+.register-login-button {
+    background: #424874;
 }
 
 .login-register-form {
