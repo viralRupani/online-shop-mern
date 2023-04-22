@@ -2,18 +2,24 @@
 
 <div class="carousel"></div>
 <div class="products">
-  <h1><%= user %></h1>
   <% foundProducts.forEach(product => {%>
-  <div class="product">
+  <form action="/cart" method="post" class="product">
     <img
       class="product-image"
       src="
-        https://source.unsplash.com/random/?city,night"
+      https://source.unsplash.com/random/?city,night"
       alt="image"
     />
-    <p><%= product.productName %></p>
-    <p>Price: <%= product.productPrice %></p>
-  </div>
+    <p>
+      <b>
+        <span class="product-name"> <%= product.productName %> </span>
+        <span class="product-price">
+          <small>₹</small><%= product.productPrice %>
+        </span>
+      </b>
+    </p>
+    <button type="submit" class="add-cart-button">Add to cart</button>
+  </form>
   <% }) %>
 </div>
 

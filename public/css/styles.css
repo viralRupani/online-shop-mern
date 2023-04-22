@@ -46,9 +46,27 @@ a {
 .product {
     display: inline-block;
     margin: 15px;
+    text-align: left;
 }
 
 .product-image {
     height: 15rem;
     width: 20rem;
+}
+
+.product-price {
+    float: right;    
+}
+
+.add-cart-button {
+    border: 0;
+    padding: 10px 15px;
+    margin-top: 5px;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.add-cart-button:hover {
+    background: rgb(7, 231, 7);
+    color: white;
 }
