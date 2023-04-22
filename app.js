@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
 const session = require("express-session");
 const app = express();
 
@@ -29,15 +28,10 @@ app.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+const indexRouter = require("./routers/indexRoute");
 const authRouter = require("./routers/authRoute");
 
+app.use("/", indexRouter);
 app.use("/auth", authRouter);
 
-app.route("/").get((req, res) => {
-  console.log(req.isAuthenticated());
-  res.render("pages/home", { isAuthenticated: req.isAuthenticated() }); //-------------------- change this line
-});
-
-app.listen(3000, () => {
-  console.log("server is started.");
-});
+app.listen(3000);
