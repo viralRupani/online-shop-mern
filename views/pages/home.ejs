@@ -2,18 +2,19 @@
 
 <div class="carousel"></div>
 <div class="products">
+  <h1><%= user %></h1>
   <% foundProducts.forEach(product => {%>
-    <div class="product">
-        <img
-        class="product-image"
-        src="
+  <div class="product">
+    <img
+      class="product-image"
+      src="
         https://source.unsplash.com/random/?city,night"
-        alt="image"
-        />
-        <p><%= product.productName %></p>
-        <p>Price: <%= product.productPrice %></p>
-    </div>
-  <% }) %>
+      alt="image"
+    />
+    <p><%= product.productName %></p>
+    <p>Price: <%= product.productPrice %></p>
   </div>
+  <% }) %>
+</div>
 
 <%- include("../partials/footer") %>

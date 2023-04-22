@@ -15,13 +15,11 @@
         </div>
         <div class="left-nav">
           <p>
-            <% if (isAuthenticated) { %>
-               Username 
-            <% } else { %>
-              <a href="/auth/register">Login/Register</a>
+            <% if (isAuthenticated) { %> <%= user.username %> <% } else { %>
+            <a href="/auth/register">Login/Register</a>
             <% } %>
           </p>
         </div>
       </nav>
     </header>
-
+  
