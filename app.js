@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
+
 const app = express();
 
 mongoose.connect("mongodb://127.0.0.1:27017/onlineShopDb");
@@ -28,8 +29,8 @@ app.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-const indexRouter = require("./routers/indexRoute");
-const authRouter = require("./routers/authRoute");
+const indexRouter = require("./routes/indexRoute");
+const authRouter = require("./routes/authRoute");
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
