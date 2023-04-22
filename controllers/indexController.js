@@ -1,7 +1,7 @@
 const { Product } = require("../models/product");
 const User = require("../models/user");
 
-module.exports.getHomePage = async (req, res, next) => {
+module.exports.home = async (req, res, next) => {
   if (req.isAuthenticated()) {
     var user = await User.findOne({ username: req.user.username });
   }
@@ -14,7 +14,7 @@ module.exports.getHomePage = async (req, res, next) => {
   });
 };
 
-module.exports.getCart = async (req, res) => {
+module.exports.cart = async (req, res) => {
   if (req.isAuthenticated()) {
     let user = await User.findOne({ username: req.user.username });
     res.render("pages/cart", { user: user, isAuthenticated: true });

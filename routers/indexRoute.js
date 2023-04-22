@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
-const { getHomePage, getCart } = require("../controllers/indexController");
+const { home, cart } = require("../controllers/indexController");
 
-router.route("/").get(getHomePage);
-router.route("/cart").get(getCart);
+router.route("/").all(home);
+router.route("/cart").all(cart);
 
 module.exports = router;
