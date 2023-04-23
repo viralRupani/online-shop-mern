@@ -27,7 +27,6 @@ module.exports.login = (req, res) => {
   if (req.method === "POST") {
     const user = new User({
       username: req.body.username,
-      email: req.body.email,
       password: req.body.password,
     });
 
