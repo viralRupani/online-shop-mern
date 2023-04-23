@@ -71,3 +71,22 @@ a {
     background: rgb(7, 231, 7);
     color: white;
 }
+
+.cart-item {
+    background-color: rgb(248, 246, 245);
+    margin: 50px 25px;
+    padding: 20px;
+    box-shadow: 0.5px 0.5px 1px rgb(95, 94, 94);
+}
+
+.product-info {
+    display: inline-block;
+    position: relative;
+    bottom: 190px;
+}
+
+.product-info>h1,
+p {
+    float: inline-start;
+    position: relative;
+}

@@ -14,10 +14,40 @@ module.exports.home = async (req, res, next) => {
   });
 };
 
-module.exports.cart = async (req, res) => {
+module.exports.cart = async (req, res, next) => {
   if (req.isAuthenticated()) {
-    let user = await User.findOne({ username: req.user.username });
-    res.render("pages/cart", { user: user, isAuthenticated: true });
+    const user = await User.findOne({ username: req.user.username });
+    if (req.method === "POST") {
+      Product.findById(req.body.submitButton)
+        .then((foundProduct) => {
+          user.cart.push(foundProduct);
+          user.save();
+          res.redirect("/cart");
+        })
+        .catch((err) => {
+          console.log(err);
+          res.redirect("/");
+        });
+    } else {
+      res.render("pages/cart", { user: user, isAuthenticated: true });
+    }
+  } else {
+    res.redirect("/");
+  }
+};
+
+module.exports.removeCartItem = async (req, res, next) => {
+  if (req.isAuthenticated()) {
+    const user = await User.findOne({ username: req.user.username });
+
+    User.updateOne(
+      { username: user.username },
+      { $pull: { cart: { _id: req.body.submitButton } } }
+    ).catch((err) => {
+      console.log(err);
+    });
+
+    res.redirect("/cart");
   } else {
     res.redirect("/");
   }

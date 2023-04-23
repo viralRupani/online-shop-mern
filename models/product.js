@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
   productDescription: {
     type: String,
     required: true,
-    minLength: 50,
+    minLength: 0,
     maxLength: 250,
   },
   productPrice: {

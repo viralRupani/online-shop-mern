@@ -1,5 +1,19 @@
 <%- include("../partials/header") %>
 
 <h1>Cart page</h1>
-
-<%- include("../partials/footer") %>
+<% user.cart.forEach(item => { %>
+<form class="cart-item" action="/removeCartItem" method="post">
+  <img
+    class="product-image"
+    src="
+      https://source.unsplash.com/random/?city,night"
+    alt="image"
+  />
+  <div class="product-info">
+    <h1><%= item.productName %></h1>
+    <p><%= item.productDescription %></p>
+  </div>
+  <span class="product-price"> <small>₹</small><%= item.productPrice %> </span>
+  <button name="submitButton" value=<%= item.id %>>Remove Item</button>
+</form>
+<% }) %> <%- include("../partials/footer") %>

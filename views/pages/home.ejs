@@ -18,7 +18,14 @@
         </span>
       </b>
     </p>
-    <button type="submit" class="add-cart-button">Add to cart</button>
+    <button
+      type="submit"
+      name="submitButton"
+      class="add-cart-button"
+      value="<%= product._id %>"
+    >
+      Add to cart
+    </button>
   </form>
   <% }) %>
 </div>
