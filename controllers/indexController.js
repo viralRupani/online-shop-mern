@@ -29,10 +29,19 @@ module.exports.cart = async (req, res, next) => {
           res.redirect("/");
         });
     } else {
-      res.render("pages/cart", { user: user, isAuthenticated: true });
+      let subTotal = 0;
+      user.cart.forEach((product) => {
+        subTotal += product.productPrice;
+      });
+      console.log(subTotal);
+      res.render("pages/cart", {
+        user: user,
+        isAuthenticated: req.isAuthenticated(),
+        subTotal: subTotal,
+      });
     }
   } else {
-    res.redirect("/");
+    res.redirect("/auth/login");
   }
 };
 
@@ -46,7 +55,6 @@ module.exports.removeCartItem = async (req, res, next) => {
     ).catch((err) => {
       console.log(err);
     });
-
     res.redirect("/cart");
   } else {
     res.redirect("/");

@@ -59,7 +59,7 @@ a {
     float: right;
 }
 
-.add-cart-button {
+.add-cart-button, .checkout-button {
     border: 0;
     padding: 10px 15px;
     margin-top: 5px;
@@ -67,12 +67,12 @@ a {
     cursor: pointer;
 }
 
-.add-cart-button:hover {
+.add-cart-button:hover, .checkout-button:hover {
     background: rgb(7, 231, 7);
     color: white;
 }
 
-.cart-item {
+.cart-item, .subTotal {
     background-color: rgb(248, 246, 245);
     margin: 50px 25px;
     padding: 20px;
@@ -89,4 +89,12 @@ a {
 p {
     float: inline-start;
     position: relative;
+}
+
+.remove-item-button {
+    height: 200px
+}
+
+.checkout-button {
+    margin-left: 20px;
 }

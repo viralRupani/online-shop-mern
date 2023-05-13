@@ -16,4 +16,11 @@
   <span class="product-price"> <small>₹</small><%= item.productPrice %> </span>
   <button name="submitButton" value=<%= item.id %>>Remove Item</button>
 </form>
-<% }) %> <%- include("../partials/footer") %>
+<% }) %>
+ 
+<div class="subTotal">
+  <p>Your total is: ₹<%= subTotal %>
+  <button class="checkout-button">Checkout</button></p>
+</div>
+
+<%- include("../partials/footer") %>
