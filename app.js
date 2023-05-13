@@ -32,8 +32,10 @@ passport.deserializeUser(User.deserializeUser());
 
 const indexRouter = require("./routes/indexRoute");
 const authRouter = require("./routes/authRoute");
+const cartRouter = require("./routes/cartRoute");
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use("/cart", cartRouter);
 
 app.listen(3000);
