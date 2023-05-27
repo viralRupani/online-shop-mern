@@ -13,3 +13,11 @@ module.exports.home = async (req, res, next) => {
     foundProducts: products,
   });
 };
+
+module.exports.checkout = async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render("pages/checkout.ejs");
+  } else {
+    res.redirect("/auth/login");
+  }
+};

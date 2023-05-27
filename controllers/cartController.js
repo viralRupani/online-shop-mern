@@ -1,5 +1,8 @@
 const { Product } = require("../models/product");
 const User = require("../models/user");
+const stripe = require("stripe")("sk_test_51Ls1X7SHdLazudTuypO7XZJE8sdeph0erg3NGaNOfiAcsCYUPYPObtjRezRZ0c4uOM5krFwXWKQRxUM60kuJgvyW00zrSsehhW");
+
+const YOUR_DOMAIN = "http://localhost:3000";
 
 module.exports.cart = async (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -20,7 +23,6 @@ module.exports.cart = async (req, res, next) => {
       user.cart.forEach((product) => {
         subTotal += product.productPrice;
       });
-      console.log(subTotal);
       res.render("pages/cart", {
         user: user,
         isAuthenticated: req.isAuthenticated(),
@@ -38,7 +40,7 @@ module.exports.removeCartItem = async (req, res, next) => {
 
     User.updateOne(
       { username: user.username },
-      { $pull: { cart: { _id: req.body.submitButton } } }
+      { $pull: { cart: { _id: req.body.removeItemButton } } }
     ).catch((err) => {
       console.log(err);
     });
@@ -46,4 +48,20 @@ module.exports.removeCartItem = async (req, res, next) => {
   } else {
     res.redirect("/");
   }
+};
+
+module.exports.createCheckoutSession = async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price: 'price_1N7fa7SHdLazudTuCl6TkbEB',
+        quantity: 1,
+      },
+    ],
+    mode: "subscription",
+    success_url: `${YOUR_DOMAIN}/views/pages/payment-status/success.html`,
+    cancel_url: `${YOUR_DOMAIN}/views/pages/payment-status/cancel.html`,
+  });
+
+  res.redirect(303, session.url);
 };

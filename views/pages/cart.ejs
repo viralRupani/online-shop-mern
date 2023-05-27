@@ -14,13 +14,13 @@
     <p><%= item.productDescription %></p>
   </div>
   <span class="product-price"> <small>₹</small><%= item.productPrice %> </span>
-  <button name="submitButton" value=<%= item.id %>>Remove Item</button>
+  <button name="removeItemButton" value=<%= item.id %>>Remove Item</button>
 </form>
 <% }) %>
  
-<div class="subTotal">
+<form method="post" action="/cart/create-checkout-session" class="subTotal">
   <p>Your total is: ₹<%= subTotal %>
   <button class="checkout-button">Checkout</button></p>
-</div>
+</form>
 
 <%- include("../partials/footer") %>
